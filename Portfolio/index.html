@@ -1,0 +1,72 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Wang Xiu Li</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="icon" href="img/icon.jpg" type="image/xicon">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+        <!-- TailwindCSS, something like Bootstrap for CSS, cos im lazy to write my own css. more info @ tailwindcss.com -->
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        <!-- SwiperJS, basic swiper/carousel framework ill be using for your swipes. more info @ swiperjs.com -->
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <!-- Give your "divs" a name! HTML semantics are important -->
+        <header class="bg-back border-b">
+            <section class="container mx-auto px-4 py-10 flex items-center justify-between">
+                <!-- some classes are self explanatory, check out tailwindcss.com for more info -->
+                <div class="h-7">
+                    <img src="img/logo.png" alt="logo" class="h-full object-cover">
+                </div>
+                <nav class="flex items-center">
+                    <a href="#about" class="mr-10 text-sm">About</a>
+                    <a href="#work" class="mr-10 text-sm">Work</a>
+                    <a href="#testimonials" class="mr-10 text-sm">Testimonials</a>
+                    <a href="#contact" class="text-sm">Contact</a>
+                </nav>
+            </section>    
+        </header>
+        
+        <!-- HERO! -->
+        <section class="min-h-80 container mx-auto px-4 py-20 flex items-center justify-center">
+            <!-- The flex is to keep everything in the middle no matter the height -->
+            <article class="grid grid-cols-2 gap-40">
+                <div class="h-full flex items-center">
+                    <div>
+                        <h1 class="text-5xl mb-6">Welcome</h1>
+                        <p class="text-2xl mb-6">I am Xiu Li, UI/UX designer from Singapore.</p>
+                        <div class="flex items-center">
+                            <a class="bg-primary text-white px-10 py-3 rounded-full mr-4 text-xs" href="#work">VIEW WORK</a>
+                                                        <!-- 
+                                You should try your best to incorporate the resume into the website.
+                                To many people, a website is the best form of a resume/portfolio already.
+                                90% of people won't bother downloading this
+                            -->
+                            <a class="border border-primary rounded-full px-10 py-3 text-xs" href="/Resume_Xiuli.pdf" download="Resume_XiuLi">DOWNLOAD RESUME</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-3/4 ml-auto">
+                    <img src="img/illustration.png" class="w-full object-contain">
+                </div>
+            </article>
+        </section>
+        
+        <!-- ABOUT! -->
+        <section class="bg-back">
+            <article class="container mx-auto px-4 py-60 min-h-50 flex items-center justify-center">
+                <div class="text-center w-3/4">
+                    <h6 class="mb-4">Introduction</h6>
+                    <h2 class="text-3xl">About Myself</h2>
+                    <div class="border-b border-primary w-16 mx-auto my-10"></div>
+                    <!-- Don't use <br> -->
+                    <p class="text-xl font-extralight mb-8">Hello! I'm Xiu Li, I enjoy reading as a hobby and I spend a lot of time on YouTube. I also love travelling because I can get to experience the world in a different way, and naturally, it opens up my mind.</p>
+                    <p class="text-xl font-extralight">After realising I have a passion for UIUX, I decided to take on the design route. I am constantly looking to learn new things and improve myself even further.</p>
+                </div>
+            </article>
+        </section>
+    </body>
+</html>
