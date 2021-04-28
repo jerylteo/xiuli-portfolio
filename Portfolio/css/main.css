@@ -3,6 +3,7 @@
     --back: #FAFAFA;   /* rgba(250, 250, 250, 1.0), navbar, about section etc */
     --primary: #383838;   /* "VIEW MORE" button etc */
     --secondary: #606060;     /* Subtitles etc */
+    --overlay: #383838B3;   /* B3 = 0.7 alpha */
     /* Side comment here, I like your colors. Simple and effective */
 }
 
@@ -14,19 +15,32 @@ body {
 }
 .bg-back {background-color: var(--back);}   /* I'll be using this class for the backgrounds */
 .bg-primary {background-color: var(--primary);}
+.bg-overlay {background-color: var(--overlay);}
 .border-primary {border-color: var(--primary);}
 .text-3xl {font-size: 2.06rem;}
 .text-5xl {font-size: 2.5rem;}
+.text-primary {color: var(--primary);}
+.text-secondary {color: var(--secondary);}
 
 /* All your Titles & Subtitles, give them some hierarchy. */
 h1 {font-weight: 500;}
-h2 {font-weight: 400;}
+h2 {
+    font-weight: 400;
+    letter-spacing: 1.5px;
+}
 h6 {
     font-weight: 300;
     text-transform: uppercase;
     color: var(--secondary);
     letter-spacing: 2px;
+    opacity: .7;
 }
 
 /* More overwrites */
 .min-h-80 {min-height: 80vh;}
+.swiper-container-horizontal>.swiper-pagination-bullets {
+    bottom: 5px !important;
+}
+.swiper-pagination-bullet-active {
+    background-color: var(--secondary);
+}

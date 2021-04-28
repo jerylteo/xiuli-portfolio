@@ -11,8 +11,32 @@
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <!-- SwiperJS, basic swiper/carousel framework ill be using for your swipes. more info @ swiperjs.com -->
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
         <link rel="stylesheet" href="css/main.css">
+        <script src="js/main.js"></script>
     </head>
+
+    <!-- 
+        You may notice some design aspects changed, they're mainly for consistency's sake.
+        e.g. Navbar's logo aligning with content, gap between portfolio grids, weird overflowing buttons etc.
+        I edited those, but you may change them back!
+
+        I try my best to adhere to your design - along with fonts and spacing, but it is not 100% accurate.
+        Feel free to change them!
+
+        More info on the responsive classes I'm using:
+            'sm': '640px',    
+            'md': '768px',
+            'lg': '1024px',
+            'xl': '1280px',
+            '2xl': '1536px',
+            There's no need to go higher than these, support for 1080p is good enough for 2k/4k/8k+ resolutions.
+
+            I changed some responsive aspects, like your hero image & navbar still appears at >md.
+
+        Just out of curiosity, why centered when >lg but left aligned when <lg? It's usually the other way around..
+     -->
+
     <body>
         <!-- Give your "divs" a name! HTML semantics are important -->
         <header class="bg-back border-b">
@@ -21,31 +45,52 @@
                 <div class="h-7">
                     <img src="img/logo.png" alt="logo" class="h-full object-cover">
                 </div>
-                <nav class="flex items-center">
-                    <a href="#about" class="mr-10 text-sm">About</a>
-                    <a href="#work" class="mr-10 text-sm">Work</a>
-                    <a href="#testimonials" class="mr-10 text-sm">Testimonials</a>
-                    <a href="#contact" class="text-sm">Contact</a>
+                <nav class="hidden sm:flex items-center">
+                    <a href="#about" class="block mr-10 text-sm">About</a>
+                    <a href="#work" class="block mr-10 text-sm">Work</a>
+                    <a href="#testimonials" class="block mr-10 text-sm">Testimonials</a>
+                    <a href="#contact" class="block text-sm">Contact</a>
                 </nav>
+                <div class="flex items-center sm:hidden">
+                    <button id="openMenu" class="h-8 w-8"><img class="h-full w-full object-cover" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMjQiIGhlaWdodD0iMjQiCnZpZXdCb3g9IjAgMCAxNzIgMTcyIgpzdHlsZT0iIGZpbGw6IzAwMDAwMDsiPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0ibm9uemVybyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1saW5lY2FwPSJidXR0IiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1kYXNoYXJyYXk9IiIgc3Ryb2tlLWRhc2hvZmZzZXQ9IjAiIGZvbnQtZmFtaWx5PSJub25lIiBmb250LXdlaWdodD0ibm9uZSIgZm9udC1zaXplPSJub25lIiB0ZXh0LWFuY2hvcj0ibm9uZSIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPjxwYXRoIGQ9Ik0wLDE3MnYtMTcyaDE3MnYxNzJ6IiBmaWxsPSJub25lIj48L3BhdGg+PGcgZmlsbD0iIzM4MzgzOCI+PHBhdGggZD0iTTE0LjMzMzMzLDc4LjgzMzMzaDE0My4zMzMzM3YxNC4zMzMzM2gtMTQzLjMzMzMzek0xNC4zMzMzMywzNS44MzMzM2gxNDMuMzMzMzN2MTQuMzMzMzNoLTE0My4zMzMzM3pNMTQuMzMzMzMsMTIxLjgzMzMzaDE0My4zMzMzM3YxNC4zMzMzM2gtMTQzLjMzMzMzeiI+PC9wYXRoPjwvZz48L2c+PC9zdmc+" alt="navBtn"></button>
+                </div>
             </section>    
+        </header>
+        <header id="mobileHeader" class="overflow-hidden fixed top-0 left-0 z-50 h-screen w-screen pb-20 transition-all duration-300 ease-in-out bg-primary" style="max-width: 0%">
+            <div class="container mx-auto px-4 py-10 text-white flex items-center justify-between">
+                <div></div>
+                <button id="closeMenu" class="text-5xl mb-10">&times;</button>
+            </div>
+            <div class="flex flex-col items-center text-white">
+                <div class="h-7 mb-10">
+                    <!-- If you can, get a white logo. -->
+                    <img src="img/logo.png" alt="logo" class="h-full object-cover">
+                </div>
+                <nav class="flex flex-col items-center text-center">
+                    <a href="#about" class="block mb-10">About</a>
+                    <a href="#work" class="block mb-10">Work</a>
+                    <a href="#testimonials" class="block mb-10">Testimonials</a>
+                    <a href="#contact" class="block">Contact</a>
+                </nav>
+            </div>
         </header>
         
         <!-- HERO! -->
         <section class="min-h-80 container mx-auto px-4 py-20 flex items-center justify-center">
             <!-- The flex is to keep everything in the middle no matter the height -->
-            <article class="grid grid-cols-2 gap-40">
+            <article class="grid grid-cols-2 gap-10 lg:gap-40">
                 <div class="h-full flex items-center">
                     <div>
                         <h1 class="text-5xl mb-6">Welcome</h1>
                         <p class="text-2xl mb-6">I am Xiu Li, UI/UX designer from Singapore.</p>
                         <div class="flex items-center">
-                            <a class="bg-primary text-white px-10 py-3 rounded-full mr-4 text-xs" href="#work">VIEW WORK</a>
-                                                        <!-- 
+                            <a class="whitespace-nowrap bg-primary text-white px-10 py-3 rounded-full mr-4 text-xs" href="#work">VIEW WORK</a>
+                            <!-- 
                                 You should try your best to incorporate the resume into the website.
                                 To many people, a website is the best form of a resume/portfolio already.
                                 90% of people won't bother downloading this
                             -->
-                            <a class="border border-primary rounded-full px-10 py-3 text-xs" href="/Resume_Xiuli.pdf" download="Resume_XiuLi">DOWNLOAD RESUME</a>
+                            <a class="whitespace-nowrap border border-primary rounded-full px-10 py-3 text-xs" href="/Resume_Xiuli.pdf" download="Resume_XiuLi">DOWNLOAD RESUME</a>
                         </div>
                     </div>
                 </div>
@@ -57,15 +102,124 @@
         
         <!-- ABOUT! -->
         <section class="bg-back">
-            <article class="container mx-auto px-4 py-60 min-h-50 flex items-center justify-center">
-                <div class="text-center w-3/4">
-                    <h6 class="mb-4">Introduction</h6>
-                    <h2 class="text-3xl">About Myself</h2>
-                    <div class="border-b border-primary w-16 mx-auto my-10"></div>
+            <article class="container mx-auto px-4 py-40 min-h-50 lg:flex items-center justify-center">
+                <div class="lg:text-center w-3/4">
+                    <h6 class="mb-2 lg:mb-4">Introduction</h6>
+                    <h2 class="text-2xl lg:text-3xl">About Myself</h2>
+                    <div class="border-b border-primary w-16 lg:mx-auto my-10"></div>
                     <!-- Don't use <br> -->
-                    <p class="text-xl font-extralight mb-8">Hello! I'm Xiu Li, I enjoy reading as a hobby and I spend a lot of time on YouTube. I also love travelling because I can get to experience the world in a different way, and naturally, it opens up my mind.</p>
-                    <p class="text-xl font-extralight">After realising I have a passion for UIUX, I decided to take on the design route. I am constantly looking to learn new things and improve myself even further.</p>
+                    <p class="text-lg lg:text-xl font-extralight mb-8">Hello! I'm Xiu Li, I enjoy reading as a hobby and I spend a lot of time on YouTube. I also love travelling because I can get to experience the world in a different way, and naturally, it opens up my mind.</p>
+                    <p class="text-lg lg:text-xl font-extralight">After realising I have a passion for UIUX, I decided to take on the design route. I am constantly looking to learn new things and improve myself even further.</p>
                 </div>
+            </article>
+        </section>
+
+        <!-- PORTFOLIO! -->
+
+        <section class="container mx-auto px-4 py-40">
+            <!-- PORTFOLIO HEADER -->
+            <article class="lg:text-center">
+                <h6 class="mb-2 lg:mb-4">Portfolio</h6>
+                <h2 class="text-2xl lg:text-3xl">My Work</h2>
+                <div class="border-b border-primary w-16 lg:mx-auto my-10"></div>
+                <!-- PORTFOLIO FILTERS -->
+                <div class="flex items-center lg:justify-center">
+                    <!-- You can also dynamically print out these buttons, but since you don't have many anyway.. -->
+                    <div class="pr-12 border-r">
+                        <!-- Use <buttons> for javascript onclick events, not <a> -->
+                        <button id="portfolio-btn-all" class="">ALL</button>     <!-- Use IDs to set/reset classes -->
+                    </div>
+                    <div class="px-12 border-r">
+                        <button id="portfolio-btn-website" class="opacity-30">WEBSITE</button>
+                    </div>
+                    <div class="px-12 border-r">
+                        <button id="portfolio-btn-application" class="opacity-30">APPLICATION</button>
+                    </div>
+                    <div class="pl-12">
+                        <button id="portfolio-btn-other" class="opacity-30">OTHER</button>
+                    </div>
+                </div>
+            </article>
+            <!-- PORTFOLIO GRID -->
+            <!-- Use Grids or Flex to position your elements dynamically, not width/float. -->
+            <article class="grid grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-10 my-16" id="portfolio-grid">   <!-- Using an id to retrieve in JS -->
+                <!-- 
+                // This is the template that will be dynamically generated in JS.
+                <div class="w-full relative">
+                    <div class="w-full">
+                        // ALWAYS enclose your images in a div, don't leave them hanging by it's own 
+                        <img src="/img/cover1.jpg" alt="Work1" class="w-full object-cover">     // Object-fit: "cover" to crop image to fit container. "contain" to downsize image to fit container.
+                    </div>
+                    <div class="absolute top-0 left-0 h-full w-full opacity-0 hover:opacity-100 transition-all bg-overlay">
+                        // Again, use flex to position elements. Don't use margin-top 25% etc.
+                        <div class="h-full w-full flex flex-col items-center justify-center text-white text-center">
+                            <p class="text-lg">ReUnite</p>
+                            <div class="border-b border-white w-16 mx-auto my-4"></div>
+                            <p class="text-lg">Application</p>
+                        </div>
+                    </div>
+                </div> 
+                -->
+            </article>
+            <button id="portfolio-btn-loadmore" class="bg-primary text-white px-14 lg:px-20 py-4 lg:py-6 rounded-full mr-4 text-xs">LOAD MORE</button>
+        </section>
+
+        <!-- TESTIMONIALS! -->
+        <section class="bg-back">
+            <article class="container mx-auto px-4 py-40 lg:text-center">
+                <!-- TESTIMONIALS HEADER -->
+                <div>
+                    <h6 class="mb-2 lg:mb-4">What Others Have Said</h6>
+                    <h2 class="text-2xl lg:text-3xl">Testimonials</h2>
+                    <div class="border-b border-primary w-16 lg:mx-auto my-10"></div>
+                </div>
+                <!-- TESTIMONIALS SLIDER -->
+                <div class="swiper-container lg:w-5/6 mx-auto">
+                    <div class="swiper-wrapper text-center" id="testimonials">
+                        <!-- 
+                            Template that will be dyanmically generated
+                            <div class="swiper-slide flex items-center justify-center">
+                                <div class="h-5/6 mx-auto bg-white shadow px-20 py-20 mb-20">
+                                    <p class="text-xl font-extralight">"Xiu Li always maintained a positive attitude and asked questions to further learn new matters. Xiu Li did not shy away from difficult conversation and was able to communicate her ideas and aspirations clearly."</p>
+                                    <div class="border-b border-primary w-16 mx-auto my-10"></div>
+                                    <p class="mb-3 font-medium">Celine Ho</p>
+                                    <p class="text-secondary opacity-80">UI/UX Design lead</p>
+                                </div>
+                            </div> 
+                        -->
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </article>
+        </section>
+
+        <!-- CONTACT! -->
+        <section class="container mx-auto px-4 py-20 lg:text-center">
+            <!-- CONTACT HEADER -->
+            <article>
+                <h6 class="mb-2 lg:mb-4">Let's Connect</h6>
+                <h2 class="text-2xl lg:text-3xl">Get In Touch</h2>
+                <div class="border-b border-primary w-16 lg:mx-auto my-10"></div>
+            </article>
+            <article class="border-b lg:w-5/6 mx-auto pb-20">
+                <p class="text-secondary mb-2">You can write me at</p>
+                <h5 class="text-primary font-medium text-xl lg:text-2xl"><a href="mailto:jwsiewli@gmail.com">jwsiewli@gmail.com</a></h5>
+            </article>
+            <article class="flex lg:justify-center items-center mt-20">
+                <!-- 
+                    Just a quick tip, use SVGs for icons instead of images. Vectors are 100% quality and suffer no compression quality drops. 
+                    You can easily export as SVG in XD/AI/PS instead of png. 
+                -->
+                <a class="block h-16 w-16" href="http://www.be.net/wxiuli"><img src="img/behance.png" class="object-cover h-full w-full"></a>
+                <a class="block h-16 w-16 mx-8" href="http://linkedin.com/in/wxiuli"><img src="img/linkedin.png" class="object-cover h-full w-full"></a>
+                <a class="block h-16 w-16" href="http://www.facebook.com/wxiuli"><img src="img/facebook.png" class="object-cover h-full w-full"></a>
+            </article>
+        </section>
+
+        <!-- FOOTER! -->
+        <section class="w-full bg-primary">
+            <article class="container mx-auto px-4 py-10 text-center text-white">
+                <p class="text-sm">Copyright © 2021 | Designed & Developed by Xiu Li</p>
             </article>
         </section>
     </body>
