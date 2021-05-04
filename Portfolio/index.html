@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="" style="scroll-behavior: smooth;">
 
     <head>
         <meta charset="utf-8">
@@ -37,9 +37,9 @@
         Just out of curiosity, why centered when >lg but left aligned when <lg? It's usually the other way around..
      -->
 
-    <body>
+    <body class="relative">
         <!-- Give your "divs" a name! HTML semantics are important -->
-        <header class="bg-back border-b">
+        <header class="bg-back border-b fixed top-0 left-0 z-50 w-full" id="header">
             <section class="container mx-auto px-4 py-10 flex items-center justify-between">
                 <!-- some classes are self explanatory, check out tailwindcss.com for more info -->
                 <div class="h-7">
@@ -52,7 +52,7 @@
                     <a href="#contact" class="block text-sm">Contact</a>
                 </nav>
                 <div class="flex items-center sm:hidden">
-                    <button id="openMenu" class="h-8 w-8"><img class="h-full w-full object-cover" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMjQiIGhlaWdodD0iMjQiCnZpZXdCb3g9IjAgMCAxNzIgMTcyIgpzdHlsZT0iIGZpbGw6IzAwMDAwMDsiPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0ibm9uemVybyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1saW5lY2FwPSJidXR0IiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1kYXNoYXJyYXk9IiIgc3Ryb2tlLWRhc2hvZmZzZXQ9IjAiIGZvbnQtZmFtaWx5PSJub25lIiBmb250LXdlaWdodD0ibm9uZSIgZm9udC1zaXplPSJub25lIiB0ZXh0LWFuY2hvcj0ibm9uZSIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPjxwYXRoIGQ9Ik0wLDE3MnYtMTcyaDE3MnYxNzJ6IiBmaWxsPSJub25lIj48L3BhdGg+PGcgZmlsbD0iIzM4MzgzOCI+PHBhdGggZD0iTTE0LjMzMzMzLDc4LjgzMzMzaDE0My4zMzMzM3YxNC4zMzMzM2gtMTQzLjMzMzMzek0xNC4zMzMzMywzNS44MzMzM2gxNDMuMzMzMzN2MTQuMzMzMzNoLTE0My4zMzMzM3pNMTQuMzMzMzMsMTIxLjgzMzMzaDE0My4zMzMzM3YxNC4zMzMzM2gtMTQzLjMzMzMzeiI+PC9wYXRoPjwvZz48L2c+PC9zdmc+" alt="navBtn"></button>
+                    <button id="openMenu" class="h-7 w-7"><img class="h-full w-full object-cover" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMjQiIGhlaWdodD0iMjQiCnZpZXdCb3g9IjAgMCAxNzIgMTcyIgpzdHlsZT0iIGZpbGw6IzAwMDAwMDsiPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0ibm9uemVybyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1saW5lY2FwPSJidXR0IiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1kYXNoYXJyYXk9IiIgc3Ryb2tlLWRhc2hvZmZzZXQ9IjAiIGZvbnQtZmFtaWx5PSJub25lIiBmb250LXdlaWdodD0ibm9uZSIgZm9udC1zaXplPSJub25lIiB0ZXh0LWFuY2hvcj0ibm9uZSIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPjxwYXRoIGQ9Ik0wLDE3MnYtMTcyaDE3MnYxNzJ6IiBmaWxsPSJub25lIj48L3BhdGg+PGcgZmlsbD0iIzM4MzgzOCI+PHBhdGggZD0iTTE0LjMzMzMzLDc4LjgzMzMzaDE0My4zMzMzM3YxNC4zMzMzM2gtMTQzLjMzMzMzek0xNC4zMzMzMywzNS44MzMzM2gxNDMuMzMzMzN2MTQuMzMzMzNoLTE0My4zMzMzM3pNMTQuMzMzMzMsMTIxLjgzMzMzaDE0My4zMzMzM3YxNC4zMzMzM2gtMTQzLjMzMzMzeiI+PC9wYXRoPjwvZz48L2c+PC9zdmc+" alt="navBtn"></button>
                 </div>
             </section>    
         </header>
@@ -66,7 +66,7 @@
                     <!-- If you can, get a white logo. -->
                     <img src="img/logo.png" alt="logo" class="h-full object-cover">
                 </div>
-                <nav class="flex flex-col items-center text-center">
+                <nav class="flex flex-col items-center text-center" id="mobileNav">
                     <a href="#about" class="block mb-10">About</a>
                     <a href="#work" class="block mb-10">Work</a>
                     <a href="#testimonials" class="block mb-10">Testimonials</a>
@@ -74,11 +74,12 @@
                 </nav>
             </div>
         </header>
+
         
         <!-- HERO! -->
-        <section class="min-h-80 container mx-auto px-4 py-20 flex items-center justify-center">
+        <section class="min-h-80 container mx-auto px-4 py-20 flex items-center justify-center" id="hero">
             <!-- The flex is to keep everything in the middle no matter the height -->
-            <article class="grid grid-cols-2 gap-10 lg:gap-40">
+            <article class="grid grid-cols-1 sm:grid-cols-2 gap-10 lg:gap-40">
                 <div class="h-full flex items-center">
                     <div>
                         <h1 class="text-5xl mb-6">Welcome</h1>
@@ -94,14 +95,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="w-3/4 ml-auto">
+                <div class="w-1/2 sm:w-3/4 mx-auto sm:ml-auto sm:mr-0">
                     <img src="img/illustration.png" class="w-full object-contain">
                 </div>
             </article>
         </section>
+
         
         <!-- ABOUT! -->
-        <section class="bg-back">
+        <section class="bg-back" id="about">
             <article class="container mx-auto px-4 py-40 min-h-50 lg:flex items-center justify-center">
                 <div class="lg:text-center w-3/4">
                     <h6 class="mb-2 lg:mb-4">Introduction</h6>
@@ -114,9 +116,9 @@
             </article>
         </section>
 
-        <!-- PORTFOLIO! -->
 
-        <section class="container mx-auto px-4 py-40">
+        <!-- PORTFOLIO! -->
+        <section class="container mx-auto px-4 py-40" id="work">
             <!-- PORTFOLIO HEADER -->
             <article class="lg:text-center">
                 <h6 class="mb-2 lg:mb-4">Portfolio</h6>
@@ -125,24 +127,24 @@
                 <!-- PORTFOLIO FILTERS -->
                 <div class="flex items-center lg:justify-center">
                     <!-- You can also dynamically print out these buttons, but since you don't have many anyway.. -->
-                    <div class="pr-12 border-r">
+                    <div class="pr-6 sm:pr-12 border-r">
                         <!-- Use <buttons> for javascript onclick events, not <a> -->
-                        <button id="portfolio-btn-all" class="">ALL</button>     <!-- Use IDs to set/reset classes -->
+                        <button id="portfolio-btn-all" class="text-sm sm:text-normal ">ALL</button>     <!-- Use IDs to set/reset classes -->
                     </div>
-                    <div class="px-12 border-r">
-                        <button id="portfolio-btn-website" class="opacity-30">WEBSITE</button>
+                    <div class="px-6 sm:px-12 border-r">
+                        <button id="portfolio-btn-website" class="text-sm sm:text-normal opacity-30">WEBSITE</button>
                     </div>
-                    <div class="px-12 border-r">
-                        <button id="portfolio-btn-application" class="opacity-30">APPLICATION</button>
+                    <div class="px-6 sm:px-12 border-r">
+                        <button id="portfolio-btn-application" class="text-sm sm:text-normal opacity-30">APPLICATION</button>
                     </div>
-                    <div class="pl-12">
-                        <button id="portfolio-btn-other" class="opacity-30">OTHER</button>
+                    <div class="pl-6 sm:pl-12">
+                        <button id="portfolio-btn-other" class="text-sm sm:text-normal opacity-30">OTHER</button>
                     </div>
                 </div>
             </article>
             <!-- PORTFOLIO GRID -->
             <!-- Use Grids or Flex to position your elements dynamically, not width/float. -->
-            <article class="grid grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-10 my-16" id="portfolio-grid">   <!-- Using an id to retrieve in JS -->
+            <article class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-10 my-16" id="portfolio-grid">   <!-- Using an id to retrieve in JS -->
                 <!-- 
                 // This is the template that will be dynamically generated in JS.
                 <div class="w-full relative">
@@ -161,11 +163,27 @@
                 </div> 
                 -->
             </article>
-            <button id="portfolio-btn-loadmore" class="bg-primary text-white px-14 lg:px-20 py-4 lg:py-6 rounded-full mr-4 text-xs">LOAD MORE</button>
+            <!-- PORTFOLIO LOAD MORE! -->
+            <article class="w-full lg:flex justify-center">
+                <button id="portfolio-btn-loadmore" class="bg-primary text-white px-14 lg:px-20 py-4 lg:py-6 rounded-full mr-4 text-xs">LOAD MORE</button>
+            </article>
+        </section>
+        <!-- PORTFOLIO MODAL (POPUP) -->
+        <section class="hidden fixed z-50 h-screen w-screen top-0 left-0 overflow-x-hidden overflow-y-scroll bg-overlay" id="portfolio-modal">
+            <article class="container mx-auto px-4 relative">
+                <div class="flex items-center justify-between w-full fixed z-50 top-0 left-0 p-20">
+                    <div></div>
+                    <button onclick="closeModal()" class="text-white text-5xl">&times;</button>
+                </div>
+                <div id="portfolio-modal-content" class="pt-40 sm:pt-40 p-10 sm:p-20 lg:p-40 w-full">
+                    <img src="img/work1.png" alt="Work 1" class="w-full">
+                </div>
+            </article>
         </section>
 
+
         <!-- TESTIMONIALS! -->
-        <section class="bg-back">
+        <section class="bg-back" id="testimonials">
             <article class="container mx-auto px-4 py-40 lg:text-center">
                 <!-- TESTIMONIALS HEADER -->
                 <div>
@@ -175,7 +193,7 @@
                 </div>
                 <!-- TESTIMONIALS SLIDER -->
                 <div class="swiper-container lg:w-5/6 mx-auto">
-                    <div class="swiper-wrapper text-center" id="testimonials">
+                    <div class="swiper-wrapper text-center" id="testimonial">
                         <!-- 
                             Template that will be dyanmically generated
                             <div class="swiper-slide flex items-center justify-center">
@@ -193,8 +211,9 @@
             </article>
         </section>
 
+
         <!-- CONTACT! -->
-        <section class="container mx-auto px-4 py-20 lg:text-center">
+        <section class="container mx-auto px-4 py-20 lg:text-center" id="contact">
             <!-- CONTACT HEADER -->
             <article>
                 <h6 class="mb-2 lg:mb-4">Let's Connect</h6>
@@ -215,6 +234,7 @@
                 <a class="block h-16 w-16" href="http://www.facebook.com/wxiuli"><img src="img/facebook.png" class="object-cover h-full w-full"></a>
             </article>
         </section>
+
 
         <!-- FOOTER! -->
         <section class="w-full bg-primary">

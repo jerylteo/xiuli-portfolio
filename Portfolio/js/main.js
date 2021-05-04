@@ -132,12 +132,32 @@ docReady(()=> {
 
 // Initialise Navbar
 function initNav() {
+    // Retrieve the needed buttons & divs
     let openBtn = document.getElementById("openMenu");
     let closeBtn = document.getElementById("closeMenu");
     let menu = document.getElementById("mobileHeader");
+    let mobileNav = document.getElementById("mobileNav");
 
+    // Close mobile nav when link clicked
+    mobileNav.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", ()=> {menu.style.maxWidth = "0%"});
+    })
     openBtn.addEventListener('click', ()=> {menu.style.maxWidth = "100%"});
     closeBtn.addEventListener('click', ()=> {menu.style.maxWidth = "0%"});
+
+    // Sets the minimum top padding for mobile view (to prevent nav overlapping with content)
+    let header = document.getElementById("header");
+    let hero = document.getElementById("hero");
+
+    if (window.innerWidth < 640)
+        hero.style.paddingTop = header.offsetHeight + "px";
+    
+    console.log(header.offsetHeight);
+    // Make sure when resizing window it'll recheck for dynamic height
+    window.addEventListener("resize", ()=> {
+        if (window.innerWidth < 640)
+            hero.style.paddingTop = header.offsetHeight + "px";
+    })
 }
 
 // Initialise Portfolio Grid
@@ -151,7 +171,7 @@ function initPortfolio(type = "ALL", page = 0) {      // Each page contains 6 wo
         portfolio.slice(0, (page+1)*6).forEach(work => {     // Slice to get the works in the current page, then loop through it.
             // HTML template to generate, only changing variables
             toAppend += `
-            <div class="w-full relative">
+            <div class="w-full relative" onclick="initPortfolioModal('${work.title}')">
                 <div class="w-full">
                     <img src="${work.thumbnail}" alt="${work.title}" class="w-full object-cover">
                 </div>
@@ -171,7 +191,7 @@ function initPortfolio(type = "ALL", page = 0) {      // Each page contains 6 wo
         portfolio.filter(work => work.type==type).slice(0, (page+1)*6).forEach(work => {     // Slice to get the works in the current page, then loop through it.
             // HTML template to generate, only changing variables
             toAppend += `
-            <div class="w-full relative">
+            <div class="w-full relative" onclick="initPortfolioModal('${work.title}')">
                 <div class="w-full">
                     <img src="${work.thumbnail}" alt="${work.title}" class="w-full object-cover">
                 </div>
@@ -210,7 +230,15 @@ function initPortfolioFunctions() {
         document.getElementById("portfolio-btn-other")
     ];
     filterBtnArr.forEach((btn, index)=> {
-        btn.addEventListener("click", ()=> {
+        btn.addEventListener("click", (e)=> {
+            // Resets all buttons to "non-active"
+            filterBtnArr.forEach(b => {
+                if (!b.classList.contains("opacity-30")) b.classList.add("opacity-30")
+            })
+            // Sets current button to "active"
+            e.target.classList.remove("opacity-30");
+
+            // Sets type for filtering
             if (index == 0) type = "ALL";
             else if (index == 1) type = "Website";
             else if (index == 2) type = "Application";
@@ -230,10 +258,28 @@ function initPortfolioFunctions() {
     })
 }
 
+// Function to dynamically set the modal popup's content
+function initPortfolioModal(workTitle) {
+    let work = portfolio.filter(work => work.title == workTitle)[0];   // Retrieve the work object from portfolio array
+    let modal = document.getElementById("portfolio-modal");
+    let modalImg = modal.querySelector("#portfolio-modal-content");
+    
+    // Sets the image of popup to the selected work's
+    modalImg.innerHTML = `<img src="${work.image}" alt="${work.title}" class="w-full">`;
+
+    // Displays modal
+    modal.classList.remove("hidden");
+}
+// Function to close modal
+function closeModal() {
+    let modal = document.getElementById("portfolio-modal");
+    modal.classList.add("hidden");
+}
+
 // Initialise Testimonials Swiper
 function initTestimonials() {
     // Insert testimonials dynamically into HTML
-    let container = document.getElementById("testimonials");
+    let container = document.getElementById("testimonial");
 
     let toAppend = "";
     testimonials.forEach(tes => {
@@ -248,7 +294,6 @@ function initTestimonials() {
             </div> 
         `;
     })
-    
     container.innerHTML = toAppend;
 
     // Initialise swiper framework
